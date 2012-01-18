@@ -82,7 +82,7 @@
     webBrowser.showPageTitleOnTitleBar = YES;
     webBrowser.showActionButton = YES;
     webBrowser.showReloadButton = YES;*/
-    webBrowser.isModal = YES;
+    webBrowser.isModal = NO;
     
     webBrowser.barStyle = UIBarStyleBlack;
     
