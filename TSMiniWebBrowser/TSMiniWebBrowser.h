@@ -49,14 +49,11 @@
     BOOL showActionButton;
     BOOL isModal;
     UIBarStyle barStyle;
+    NSString *modalDismissButtonTitle;
     
     // State control
     UIBarStyle originalBarStyle;
 }
-
-@property (strong, nonatomic) UIWebView *webView;
-@property (strong, nonatomic) UIToolbar *toolBar;
-@property (strong, nonatomic) UINavigationBar *navigationBarModal;
 
 @property (nonatomic, assign) BOOL showURLStringOnActionSheetTitle;
 @property (nonatomic, assign) BOOL showPageTitleOnTitleBar;
@@ -64,6 +61,7 @@
 @property (nonatomic, assign) BOOL showActionButton;
 @property (nonatomic, assign) BOOL isModal;
 @property (nonatomic, assign) UIBarStyle barStyle;
+@property (nonatomic, strong) NSString *modalDismissButtonTitle;
 
 // Public Methods
 - (id)initWithUrl:(NSURL*)url;

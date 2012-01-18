@@ -87,6 +87,7 @@
     webBrowser.barStyle = UIBarStyleBlack;
     
     if (webBrowser.isModal) {
+        webBrowser.modalDismissButtonTitle = @"Home";
         [self presentModalViewController:webBrowser animated:YES];
     } else {
         [self.navigationController pushViewController:webBrowser animated:YES];

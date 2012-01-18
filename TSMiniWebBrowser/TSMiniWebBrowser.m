@@ -27,15 +27,14 @@
 #import "TSMiniWebBrowser.h"
 
 @implementation TSMiniWebBrowser
-@synthesize webView;
-@synthesize toolBar;
+
 @synthesize showURLStringOnActionSheetTitle;
 @synthesize showPageTitleOnTitleBar;
 @synthesize showReloadButton;
 @synthesize showActionButton;
 @synthesize isModal;
-@synthesize navigationBarModal;
 @synthesize barStyle;
+@synthesize modalDismissButtonTitle;
 
 #pragma mark - Private Methods
 
@@ -61,7 +60,8 @@
 #pragma mark - Init
 
 -(void) initTitleBar {
-    UIBarButtonItem *buttonDone = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(dismissController)];
+    //UIBarButtonItem *buttonDone = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(dismissController)];
+    UIBarButtonItem *buttonDone = [[UIBarButtonItem alloc] initWithTitle:modalDismissButtonTitle style:UIBarButtonItemStyleBordered target:self action:@selector(dismissController)];
     
     UINavigationItem *titleBar = [[UINavigationItem alloc] initWithTitle:@""];
     titleBar.leftBarButtonItem = buttonDone;
@@ -127,7 +127,7 @@
     }
     
     // Set buttons to tool bar
-    [self.toolBar setItems:toolBarButtons animated:YES];
+    [toolBar setItems:toolBarButtons animated:YES];
 }
 
 -(void) initWebView {
@@ -142,11 +142,11 @@
     
     webView.scalesPageToFit = YES;
     
-    self.webView.delegate = self;
+    webView.delegate = self;
     
     // Load the URL in the webView
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:urlToLoad];
-    [self.webView loadRequest:requestObj];
+    [webView loadRequest:requestObj];
 }
 
 #pragma mark -
@@ -163,6 +163,7 @@
         showReloadButton = YES;
         showActionButton = YES;
         isModal = NO;
+        modalDismissButtonTitle = NSLocalizedString(@"Done", nil);
     }
     
     return self;
@@ -320,10 +321,10 @@
     [self toggleBackForwardButtons];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webViewDidFinishLoad:(UIWebView *)_webView {
     // Show page title on title bar?
     if (showPageTitleOnTitleBar) {
-        NSString *pageTitle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
         if (isModal) {
             navigationBarModal.topItem.title = pageTitle;
         } else {
