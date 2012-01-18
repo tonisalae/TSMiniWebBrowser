@@ -92,8 +92,5 @@
     } else {
         [self.navigationController pushViewController:webBrowser animated:YES];
     }
-    
-   
-    
 }
 @end
