@@ -1,0 +1,71 @@
+//
+//  TSMiniWebBrowser.h
+//  TSMiniWebBrowserDemo
+//
+//  Created by Toni Sala Echaurren on 18/01/12.
+//  Copyright 2012 Toni Sala. All rights reserved.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+#import <UIKit/UIKit.h>
+
+#define kToolBarHeight  44
+
+@interface TSMiniWebBrowser : UIViewController <UIWebViewDelegate, UIActionSheetDelegate> {
+    // URL
+    NSURL *urlToLoad;
+    
+    // Layout
+    UIWebView *webView;
+    UIToolbar *toolBar;
+    UINavigationBar *navigationBarModal; // Only used in modal mode
+    
+    // Toolbar items
+    UIActivityIndicatorView *activityIndicator;
+    UIBarButtonItem *buttonGoBack;
+    UIBarButtonItem *buttonGoForward;
+    
+    // Customization
+    BOOL showURLStringOnActionSheetTitle;
+    BOOL showPageTitleOnTitleBar;
+    BOOL showReloadButton;
+    BOOL showActionButton;
+    BOOL isModal;
+    UIBarStyle barStyle;
+    
+    // State control
+    UIBarStyle originalBarStyle;
+}
+
+@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) UIToolbar *toolBar;
+@property (strong, nonatomic) UINavigationBar *navigationBarModal;
+
+@property (nonatomic, assign) BOOL showURLStringOnActionSheetTitle;
+@property (nonatomic, assign) BOOL showPageTitleOnTitleBar;
+@property (nonatomic, assign) BOOL showReloadButton;
+@property (nonatomic, assign) BOOL showActionButton;
+@property (nonatomic, assign) BOOL isModal;
+@property (nonatomic, assign) UIBarStyle barStyle;
+
+// Public Methods
+- (id)initWithUrl:(NSURL*)url;
+
+@end
