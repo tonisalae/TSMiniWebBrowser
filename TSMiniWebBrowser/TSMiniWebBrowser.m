@@ -38,6 +38,14 @@
 
 #pragma mark - Private Methods
 
+-(void)setTitleBarText:(NSString*)pageTitle {
+    if (isModal) {
+        navigationBarModal.topItem.title = pageTitle;
+    } else {
+        if(pageTitle) [[self navigationItem] setTitle:pageTitle];
+    }
+}
+
 -(void) toggleBackForwardButtons {
     buttonGoBack.enabled = webView.canGoBack;
     buttonGoForward.enabled = webView.canGoForward;
@@ -163,6 +171,7 @@
         showActionButton = YES;
         isModal = NO;
         modalDismissButtonTitle = NSLocalizedString(@"Done", nil);
+        forcedTitleBarText = nil;
     }
     
     return self;
@@ -194,6 +203,9 @@
     activityIndicator.hidden = NO;
     buttonGoBack.enabled = NO;
     buttonGoForward.enabled = NO;
+    if (forcedTitleBarText != nil) {
+        [self setTitleBarText:forcedTitleBarText];
+    }
 }
 
 - (void)viewDidUnload
@@ -311,6 +323,13 @@
     [self showActionSheet];
 }
 
+#pragma mark - Public Methods
+
+- (void)forceTitleBarTextTo:(NSString*)newTitleBarText {
+    forcedTitleBarText = newTitleBarText;
+    showPageTitleOnTitleBar = NO;
+}
+
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -339,11 +358,7 @@
     // Show page title on title bar?
     if (showPageTitleOnTitleBar) {
         NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        if (isModal) {
-            navigationBarModal.topItem.title = pageTitle;
-        } else {
-            if(pageTitle) [[self navigationItem] setTitle:pageTitle];
-        }
+        [self setTitleBarText:pageTitle];
     }
     
     [self hideActivityIndicators];

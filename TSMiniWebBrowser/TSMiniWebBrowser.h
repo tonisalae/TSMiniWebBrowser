@@ -50,6 +50,7 @@
     BOOL isModal;
     UIBarStyle barStyle;
     NSString *modalDismissButtonTitle;
+    NSString *forcedTitleBarText;
     
     // State control
     UIBarStyle originalBarStyle;
@@ -65,5 +66,6 @@
 
 // Public Methods
 - (id)initWithUrl:(NSURL*)url;
+- (void)forceTitleBarTextTo:(NSString*)newTitleBarText;
 
 @end
