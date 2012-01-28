@@ -221,7 +221,7 @@
 }
 
 /* Fix for landscape + zooming webview bug.
- * If you experience perfomance problems on old devices ratation, comment out this method.
+ * If you experience perfomance problems on old devices ratation, comment out this method..
  */
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     CGFloat ratioAspect = webView.bounds.size.width/webView.bounds.size.height;
