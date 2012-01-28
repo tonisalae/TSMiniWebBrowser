@@ -1,4 +1,4 @@
-## TSMiniWebBrowser - In-App web browser control for iPhone apps
+## TSMiniWebBrowser - In-App web browser control for iOS apps
 
 There are already some solutions to this problem out there but non of them offers this features. First, this solution solves the well-known **UIWebView bug** that causes erratic behavior when combining "zooming operations" and "landscape orientation". Moreover, the solution presented is **highly customizable**.
 

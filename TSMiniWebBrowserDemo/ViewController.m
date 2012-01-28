@@ -77,7 +77,8 @@
 }
 
 - (IBAction)buttonTouchUp:(id)sender {
-    TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
+    //TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
+    TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://vu0.org/temp/uiwebview.html"]];
     /*webBrowser.showURLStringOnActionSheetTitle = YES;
     webBrowser.showPageTitleOnTitleBar = YES;
     webBrowser.showActionButton = YES;
