@@ -43,14 +43,14 @@
     buttonGoForward.enabled = webView.canGoForward;
 }
 
--(void) checkIsLoading {
-    if (webView.loading) {
-        [activityIndicator setHidden:NO];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    } else {
-        [activityIndicator setHidden:YES];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    }
+-(void)showActivityIndicators {
+    [activityIndicator setHidden:NO];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+-(void)hideActivityIndicators {
+    [activityIndicator setHidden:YES];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 -(void) dismissController {
@@ -60,7 +60,6 @@
 #pragma mark - Init
 
 -(void) initTitleBar {
-    //UIBarButtonItem *buttonDone = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(dismissController)];
     UIBarButtonItem *buttonDone = [[UIBarButtonItem alloc] initWithTitle:modalDismissButtonTitle style:UIBarButtonItemStyleBordered target:self action:@selector(dismissController)];
     
     UINavigationItem *titleBar = [[UINavigationItem alloc] initWithTitle:@""];
@@ -195,9 +194,6 @@
     activityIndicator.hidden = NO;
     buttonGoBack.enabled = NO;
     buttonGoForward.enabled = NO;
-    
-    // Set callback for activity indicator status.
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkIsLoading) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidUnload
@@ -221,7 +217,7 @@
 }
 
 /* Fix for landscape + zooming webview bug.
- * If you experience perfomance problems on old devices ratation, comment out this method..
+ * If you experience perfomance problems on old devices ratation, comment out this method.
  */
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     CGFloat ratioAspect = webView.bounds.size.width/webView.bounds.size.height;
@@ -335,6 +331,8 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self toggleBackForwardButtons];
+    
+    [self showActivityIndicators];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)_webView {
@@ -347,6 +345,8 @@
             if(pageTitle) [[self navigationItem] setTitle:pageTitle];
         }
     }
+    
+    [self hideActivityIndicators];
 }
 
 @end
