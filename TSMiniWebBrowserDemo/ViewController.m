@@ -82,7 +82,7 @@
     webBrowser.showPageTitleOnTitleBar = YES;
     webBrowser.showActionButton = YES;
      webBrowser.showReloadButton = YES;*/
-    //[webBrowser forceTitleBarTextTo:@"Test Title Text"];
+    //[webBrowser setFixedTitleBarText:@"Test Title Text"];
     webBrowser.isModal = NO;
     
     webBrowser.barStyle = UIBarStyleBlack;

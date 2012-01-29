@@ -66,6 +66,6 @@
 
 // Public Methods
 - (id)initWithUrl:(NSURL*)url;
-- (void)forceTitleBarTextTo:(NSString*)newTitleBarText;
+- (void)setFixedTitleBarText:(NSString*)newTitleBarText;
 
 @end

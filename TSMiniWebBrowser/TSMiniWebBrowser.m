@@ -325,7 +325,7 @@
 
 #pragma mark - Public Methods
 
-- (void)forceTitleBarTextTo:(NSString*)newTitleBarText {
+- (void)setFixedTitleBarText:(NSString*)newTitleBarText {
     forcedTitleBarText = newTitleBarText;
     showPageTitleOnTitleBar = NO;
 }
