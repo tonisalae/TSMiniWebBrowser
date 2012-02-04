@@ -362,6 +362,8 @@
     }
     
     [self hideActivityIndicators];
+    
+    [self toggleBackForwardButtons];
 }
 
 @end
