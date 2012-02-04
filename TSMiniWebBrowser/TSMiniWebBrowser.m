@@ -28,20 +28,21 @@
 
 @implementation TSMiniWebBrowser
 
+@synthesize mode;
 @synthesize showURLStringOnActionSheetTitle;
 @synthesize showPageTitleOnTitleBar;
 @synthesize showReloadButton;
 @synthesize showActionButton;
-@synthesize isModal;
 @synthesize barStyle;
 @synthesize modalDismissButtonTitle;
 
 #pragma mark - Private Methods
 
 -(void)setTitleBarText:(NSString*)pageTitle {
-    if (isModal) {
+    if (mode == TSMiniWebBrowserModeModal) {
         navigationBarModal.topItem.title = pageTitle;
-    } else {
+        
+    } else if(mode == TSMiniWebBrowserModeNavigation) {
         if(pageTitle) [[self navigationItem] setTitle:pageTitle];
     }
 }
@@ -53,11 +54,13 @@
 
 -(void)showActivityIndicators {
     [activityIndicator setHidden:NO];
+    [activityIndicator startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 -(void)hideActivityIndicators {
     [activityIndicator setHidden:YES];
+    [activityIndicator stopAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
@@ -84,12 +87,17 @@
 }
 
 -(void) initToolBar {
-    if (!isModal) {
+    if (mode == TSMiniWebBrowserModeNavigation) {
         self.navigationController.navigationBar.barStyle = barStyle;
     }
     
     CGSize viewSize = self.view.frame.size;
-    toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, viewSize.height-kToolBarHeight, viewSize.width, kToolBarHeight)];
+    if (mode == TSMiniWebBrowserModeTabBar) {
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, -1, viewSize.width, kToolBarHeight)];
+    } else {
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, viewSize.height-kToolBarHeight, viewSize.width, kToolBarHeight)];
+    }
+    
     toolBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     toolBar.barStyle = barStyle;
     [self.view addSubview:toolBar];
@@ -113,7 +121,6 @@
     // Activity indicator is a bit special
     activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicator.frame = CGRectMake(11, 7, 20, 20);
-    [activityIndicator startAnimating];
     UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 43, 33)];
     [containerView addSubview:activityIndicator];
     UIBarButtonItem *buttonContainer = [[UIBarButtonItem alloc] initWithCustomView:containerView];
@@ -139,10 +146,13 @@
 
 -(void) initWebView {
     CGSize viewSize = self.view.frame.size;
-    if (isModal) {
+    if (mode == TSMiniWebBrowserModeModal) {
         webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, kToolBarHeight, viewSize.width, viewSize.height-kToolBarHeight*2)];
-    } else {
+    } else if(mode == TSMiniWebBrowserModeNavigation) {
         webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, viewSize.width, viewSize.height-kToolBarHeight)];
+    } else if(mode == TSMiniWebBrowserModeTabBar) {
+        self.view.backgroundColor = [UIColor redColor];
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, kToolBarHeight-1, viewSize.width, viewSize.height-kToolBarHeight+1)];
     }
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:webView];
@@ -165,11 +175,11 @@
         urlToLoad = url;
         
         // Defaults
+        mode = TSMiniWebBrowserModeNavigation;
         showURLStringOnActionSheetTitle = YES;
         showPageTitleOnTitleBar = YES;
         showReloadButton = YES;
         showActionButton = YES;
-        isModal = NO;
         modalDismissButtonTitle = NSLocalizedString(@"Done", nil);
         forcedTitleBarText = nil;
     }
@@ -183,29 +193,39 @@
 {
     [super viewDidLoad];
     
-    // Store the current navigationBar bar style to be able to restore it later.
-    if (!isModal) {
-        originalBarStyle = self.navigationController.navigationBar.barStyle;
+    // Main view frame.
+    if (mode == TSMiniWebBrowserModeTabBar) {
+        CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height - kTabBarHeight;
+        if (![UIApplication sharedApplication].statusBarHidden) {
+            viewHeight -= [UIApplication sharedApplication].statusBarFrame.size.height;
+        }
+        self.view.frame = CGRectMake(0, 0, viewWidth, viewHeight);
     }
     
-    // Init web view
-    [self initWebView];
+    // Store the current navigationBar bar style to be able to restore it later.
+    if (mode == TSMiniWebBrowserModeNavigation) {
+        originalBarStyle = self.navigationController.navigationBar.barStyle;
+    }
     
     // Init tool bar
     [self initToolBar];
     
+    // Init web view
+    [self initWebView];
+    
     // Init title bar if presented modally
-    if (isModal) {
+    if (mode == TSMiniWebBrowserModeModal) {
         [self initTitleBar];
     }
     
     // UI state
-    activityIndicator.hidden = NO;
     buttonGoBack.enabled = NO;
     buttonGoForward.enabled = NO;
     if (forcedTitleBarText != nil) {
         [self setTitleBarText:forcedTitleBarText];
     }
+    
 }
 
 - (void)viewDidUnload
@@ -217,7 +237,7 @@
     [super viewWillDisappear:animated];
     
     // Restore navigationBar bar style.
-    if (!isModal) {
+    if (mode == TSMiniWebBrowserModeNavigation) {
         self.navigationController.navigationBar.barStyle = originalBarStyle;
     }
 }
@@ -281,11 +301,14 @@
 													otherButtonTitles:NSLocalizedString(@"Open in Safari", nil),  nil];
     
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-	[actionSheet showInView:self.view];
     
-    // ** Use this code instead to present the action sheet if you have a tab bar. Import AppDelegate.h
-    //AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    //[actionSheet showInView:appDelegate.tabBarController.view];
+    if (mode == TSMiniWebBrowserModeTabBar) {
+        [actionSheet showInView:self.tabBarController.view];
+        
+    } else {
+        [actionSheet showInView:self.view];
+    }
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -337,7 +360,7 @@
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;
     }
-
+    
     if ([[request.URL absoluteString] hasPrefix:@"http://www.youtube.com/v/"] ||
         [[request.URL absoluteString] hasPrefix:@"http://itunes.apple.com/"] ||
         [[request.URL absoluteString] hasPrefix:@"http://phobos.apple.com/"]) {

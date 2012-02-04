@@ -27,20 +27,44 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
+#import "TSMiniWebBrowser.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize navigationController = _navigationController;
+@synthesize tabBarController = _tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    BOOL wantTabBarDemo = NO;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-    self.window.rootViewController = self.navigationController;
+    
+    // Tabbar mode demo init code
+    if (wantTabBarDemo) {
+        UIViewController *dummyViewController = [[UIViewController alloc] init];
+        
+        TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
+        webBrowser.barStyle = UIBarStyleBlack;
+        webBrowser.mode = TSMiniWebBrowserModeTabBar;
+        
+        self.tabBarController = [[UITabBarController alloc] init];
+        self.tabBarController.viewControllers = [NSArray arrayWithObjects:webBrowser, dummyViewController, nil];
+        
+        self.window.rootViewController = self.tabBarController;
+        
+    // navigation and modal mode demo init code
+    } else {
+        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+        
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+        
+        self.window.rootViewController = self.navigationController;
+    }
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

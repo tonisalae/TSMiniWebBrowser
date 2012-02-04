@@ -4,7 +4,13 @@ There are already some solutions to this problem out there but non of them offer
 
 More about me at [IndieDevStories.com](http://indiedevstories.com)
 
-![image](http://indiedevstories.files.wordpress.com/2012/01/tsminiwebbrowser.png)
+[![Alt][screenshot1_thumb]][screenshot1]    [![Alt][screenshot2_thumb]][screenshot2]    [![Alt][screenshot3_thumb]][screenshot3]
+[screenshot1_thumb]: http://dl.dropbox.com/u/7604222/GitHub/TSMiniWebBrowser/shot_01_thumb.png
+[screenshot1]: http://dl.dropbox.com/u/7604222/GitHub/TSMiniWebBrowser/shot_01.png
+[screenshot2_thumb]: http://dl.dropbox.com/u/7604222/GitHub/TSMiniWebBrowser/shot_02_thumb.png
+[screenshot2]: http://dl.dropbox.com/u/7604222/GitHub/TSMiniWebBrowser/shot_02.png
+[screenshot3_thumb]: http://dl.dropbox.com/u/7604222/GitHub/TSMiniWebBrowser/shot_03_thumb.png
+[screenshot3]: http://dl.dropbox.com/u/7604222/GitHub/TSMiniWebBrowser/shot_03.png
 
 ## Features
 
@@ -20,10 +26,11 @@ TSMiniWebBrowser offers the following **features**:
 
 As you can see, there are some items that are “optional”. That means that you can configure the browser to display or not those items, depending on your app needs.
 
-Moreover, TSMiniWebBrowser **supports 2 presentation modes**:
+Moreover, TSMiniWebBrowser **supports 3 presentation modes**:
 
 * **Navigation controller mode**. Using this mode you can push the browser to your navigation controller.
 * **Modal mode**. Using this mode you can present the browser modally. A title bar with a dismiss button will be automatically added.
+* **Tab bar mode**. Using this mode you can show the browser as a tab of a tab bar view controller. The toolbar with the navigation controls will be positioned at the top of the view automatically.
 
 ## Usage
 
@@ -32,20 +39,21 @@ If you are OK with the **TSMiniWebBrowser defaults**, you can simply use this sn
 	TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
 	[self.navigationController pushViewController:webBrowser animated:YES];
 
-If you prefer, you may **customize** the browser behavior. There is also a **simple Demo app** within the project.
+If you prefer, you may **customize** the browser behavior. There is also a **simple Demo app** within the project. To test the tab bar mode go to the `application: didFinishLaunchingWithOptions:` method in `AppDelegate.m` and set the `BOOL wantTabBarDemo = NO;` value to `YES`.
 
 	TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
     webBrowser.showURLStringOnActionSheetTitle = YES;
     webBrowser.showPageTitleOnTitleBar = YES;
     webBrowser.showActionButton = YES;
     webBrowser.showReloadButton = YES;
-    webBrowser.isModal = NO;
+    webBrowser.mode = TSMiniWebBrowserModeNavigation;
 
     webBrowser.barStyle = UIBarStyleBlack;
 
-    if (webBrowser.isModal) {
+    if (webBrowser.mode == TSMiniWebBrowserModeModal) {
+        webBrowser.modalDismissButtonTitle = @"Home";
         [self presentModalViewController:webBrowser animated:YES];
-    } else {
+    } else if(webBrowser.mode == TSMiniWebBrowserModeNavigation) {
         [self.navigationController pushViewController:webBrowser animated:YES];
     }
 

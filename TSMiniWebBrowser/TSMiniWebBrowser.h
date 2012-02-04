@@ -27,6 +27,13 @@
 #import <UIKit/UIKit.h>
 
 #define kToolBarHeight  44
+#define kTabBarHeight   49
+
+typedef enum {
+	TSMiniWebBrowserModeNavigation,
+	TSMiniWebBrowserModeModal,
+    TSMiniWebBrowserModeTabBar,
+} TSMiniWebBrowserMode;
 
 @interface TSMiniWebBrowser : UIViewController <UIWebViewDelegate, UIActionSheetDelegate> {
     // URL
@@ -43,11 +50,11 @@
     UIBarButtonItem *buttonGoForward;
     
     // Customization
+    TSMiniWebBrowserMode mode;
     BOOL showURLStringOnActionSheetTitle;
     BOOL showPageTitleOnTitleBar;
     BOOL showReloadButton;
     BOOL showActionButton;
-    BOOL isModal;
     UIBarStyle barStyle;
     NSString *modalDismissButtonTitle;
     NSString *forcedTitleBarText;
@@ -56,11 +63,11 @@
     UIBarStyle originalBarStyle;
 }
 
+@property (nonatomic, assign) TSMiniWebBrowserMode mode;
 @property (nonatomic, assign) BOOL showURLStringOnActionSheetTitle;
 @property (nonatomic, assign) BOOL showPageTitleOnTitleBar;
 @property (nonatomic, assign) BOOL showReloadButton;
 @property (nonatomic, assign) BOOL showActionButton;
-@property (nonatomic, assign) BOOL isModal;
 @property (nonatomic, assign) UIBarStyle barStyle;
 @property (nonatomic, strong) NSString *modalDismissButtonTitle;
 

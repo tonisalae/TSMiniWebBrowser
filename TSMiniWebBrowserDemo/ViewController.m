@@ -78,19 +78,19 @@
 
 - (IBAction)buttonTouchUp:(id)sender {
     TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
-    /*webBrowser.showURLStringOnActionSheetTitle = YES;
-    webBrowser.showPageTitleOnTitleBar = YES;
-    webBrowser.showActionButton = YES;
-     webBrowser.showReloadButton = YES;*/
-    //[webBrowser setFixedTitleBarText:@"Test Title Text"];
-    webBrowser.isModal = NO;
+//    webBrowser.showURLStringOnActionSheetTitle = YES;
+//    webBrowser.showPageTitleOnTitleBar = YES;
+//    webBrowser.showActionButton = YES;
+//    webBrowser.showReloadButton = YES;
+//    [webBrowser setFixedTitleBarText:@"Test Title Text"]; // This has priority over "showPageTitleOnTitleBar".
+    webBrowser.mode = TSMiniWebBrowserModeNavigation;
     
     webBrowser.barStyle = UIBarStyleBlack;
     
-    if (webBrowser.isModal) {
+    if (webBrowser.mode == TSMiniWebBrowserModeModal) {
         webBrowser.modalDismissButtonTitle = @"Home";
         [self presentModalViewController:webBrowser animated:YES];
-    } else {
+    } else if(webBrowser.mode == TSMiniWebBrowserModeNavigation) {
         [self.navigationController pushViewController:webBrowser animated:YES];
     }
 }
