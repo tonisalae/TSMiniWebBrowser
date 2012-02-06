@@ -38,17 +38,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    BOOL wantTabBarDemo = NO;
+    BOOL wantTabBarDemo = YES;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Tabbar mode demo init code
     if (wantTabBarDemo) {
         UIViewController *dummyViewController = [[UIViewController alloc] init];
+        dummyViewController.title = @"Other Controller";
+        dummyViewController.tabBarItem.image = [UIImage imageNamed:@"first.png"];
         
         TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
         webBrowser.barStyle = UIBarStyleBlack;
         webBrowser.mode = TSMiniWebBrowserModeTabBar;
+        webBrowser.title = @"TSMiniWebBrowser";
+        webBrowser.tabBarItem.image = [UIImage imageNamed:@"second.png"];
         
         self.tabBarController = [[UITabBarController alloc] init];
         self.tabBarController.viewControllers = [NSArray arrayWithObjects:webBrowser, dummyViewController, nil];
