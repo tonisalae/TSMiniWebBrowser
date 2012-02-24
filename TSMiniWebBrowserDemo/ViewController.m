@@ -25,7 +25,6 @@
 //
 
 #import "ViewController.h"
-#import "TSMiniWebBrowser.h"
 
 @implementation ViewController
 
@@ -78,6 +77,7 @@
 
 - (IBAction)buttonTouchUp:(id)sender {
     TSMiniWebBrowser *webBrowser = [[TSMiniWebBrowser alloc] initWithUrl:[NSURL URLWithString:@"http://indiedevstories.com"]];
+    webBrowser.delegate = self;
 //    webBrowser.showURLStringOnActionSheetTitle = YES;
 //    webBrowser.showPageTitleOnTitleBar = YES;
 //    webBrowser.showActionButton = YES;
@@ -94,4 +94,11 @@
         [self.navigationController pushViewController:webBrowser animated:YES];
     }
 }
+
+#pragma mark - TSMiniWebBrowserDelegate
+
+-(void) tsMiniWebBrowserDidDismiss {
+    NSLog(@"TSMiniWebBrowser was dismissed");
+}
+
 @end

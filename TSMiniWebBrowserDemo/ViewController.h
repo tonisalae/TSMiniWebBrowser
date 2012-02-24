@@ -25,8 +25,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSMiniWebBrowser.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController <TSMiniWebBrowserDelegate> {
     
 }
 - (IBAction)buttonTouchUp:(id)sender;

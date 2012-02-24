@@ -29,6 +29,11 @@
 #define kToolBarHeight  44
 #define kTabBarHeight   49
 
+@protocol TSMiniWebBrowserDelegate <NSObject>
+@optional
+-(void) tsMiniWebBrowserDidDismiss;
+@end
+
 typedef enum {
 	TSMiniWebBrowserModeNavigation,
 	TSMiniWebBrowserModeModal,
@@ -62,6 +67,8 @@ typedef enum {
     // State control
     UIBarStyle originalBarStyle;
 }
+
+@property (assign) id<TSMiniWebBrowserDelegate> delegate;
 
 @property (nonatomic, assign) TSMiniWebBrowserMode mode;
 @property (nonatomic, assign) BOOL showURLStringOnActionSheetTitle;

@@ -28,6 +28,7 @@
 
 @implementation TSMiniWebBrowser
 
+@synthesize delegate;
 @synthesize mode;
 @synthesize showURLStringOnActionSheetTitle;
 @synthesize showPageTitleOnTitleBar;
@@ -66,6 +67,11 @@
 
 -(void) dismissController {
     [self dismissModalViewControllerAnimated:YES];
+    
+    // Notify the delegate
+    if (self.delegate != NULL && [self.delegate respondsToSelector:@selector(tsMiniWebBrowserDidDismiss)]) {
+        [delegate tsMiniWebBrowserDidDismiss];
+    }
 }
 
 #pragma mark - Init
