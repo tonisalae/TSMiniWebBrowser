@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FBF4B6314F7EACF0048C98E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF4B6214F7EACF0048C98E /* UIKit.framework */; };
+		6FBF4B6514F7EACF0048C98E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF4B6414F7EACF0048C98E /* Foundation.framework */; };
+		6FBF4B6714F7EACF0048C98E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF4B6614F7EACF0048C98E /* CoreGraphics.framework */; };
+		6FBF4B6D14F7EACF0048C98E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B6B14F7EACF0048C98E /* InfoPlist.strings */; };
+		6FBF4B6F14F7EACF0048C98E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF4B6E14F7EACF0048C98E /* main.m */; };
+		6FBF4B7314F7EACF0048C98E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF4B7214F7EACF0048C98E /* AppDelegate.m */; };
+		6FBF4B7614F7EACF0048C98E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF4B7514F7EACF0048C98E /* ViewController.m */; };
+		6FBF4B7914F7EACF0048C98E /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B7714F7EACF0048C98E /* ViewController.xib */; };
+		6FBF4B8A14F7EAF90048C98E /* back_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8114F7EAF90048C98E /* back_icon.png */; };
+		6FBF4B8B14F7EAF90048C98E /* back_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8214F7EAF90048C98E /* back_icon@2x.png */; };
+		6FBF4B8C14F7EAF90048C98E /* forward_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8314F7EAF90048C98E /* forward_icon.png */; };
+		6FBF4B8D14F7EAF90048C98E /* forward_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8414F7EAF90048C98E /* forward_icon@2x.png */; };
+		6FBF4B8E14F7EAF90048C98E /* reload_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8514F7EAF90048C98E /* reload_icon.png */; };
+		6FBF4B8F14F7EAF90048C98E /* reload_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8614F7EAF90048C98E /* reload_icon@2x.png */; };
+		6FBF4B9014F7EAF90048C98E /* TSMiniWebBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8814F7EAF90048C98E /* TSMiniWebBrowser.m */; };
+		6FBF4B9114F7EAF90048C98E /* TSMiniWebBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF4B8914F7EAF90048C98E /* TSMiniWebBrowser.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6FBF4B5E14F7EACF0048C98E /* EmbeddedYoutubePatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbeddedYoutubePatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBF4B6214F7EACF0048C98E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6FBF4B6414F7EACF0048C98E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6FBF4B6614F7EACF0048C98E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6FBF4B6A14F7EACF0048C98E /* EmbeddedYoutubePatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EmbeddedYoutubePatch-Info.plist"; sourceTree = "<group>"; };
+		6FBF4B6C14F7EACF0048C98E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6FBF4B6E14F7EACF0048C98E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6FBF4B7014F7EACF0048C98E /* EmbeddedYoutubePatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EmbeddedYoutubePatch-Prefix.pch"; sourceTree = "<group>"; };
+		6FBF4B7114F7EACF0048C98E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6FBF4B7214F7EACF0048C98E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6FBF4B7414F7EACF0048C98E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6FBF4B7514F7EACF0048C98E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6FBF4B7814F7EACF0048C98E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		6FBF4B8114F7EAF90048C98E /* back_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_icon.png; sourceTree = "<group>"; };
+		6FBF4B8214F7EAF90048C98E /* back_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_icon@2x.png"; sourceTree = "<group>"; };
+		6FBF4B8314F7EAF90048C98E /* forward_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward_icon.png; sourceTree = "<group>"; };
+		6FBF4B8414F7EAF90048C98E /* forward_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward_icon@2x.png"; sourceTree = "<group>"; };
+		6FBF4B8514F7EAF90048C98E /* reload_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_icon.png; sourceTree = "<group>"; };
+		6FBF4B8614F7EAF90048C98E /* reload_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload_icon@2x.png"; sourceTree = "<group>"; };
+		6FBF4B8714F7EAF90048C98E /* TSMiniWebBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMiniWebBrowser.h; sourceTree = "<group>"; };
+		6FBF4B8814F7EAF90048C98E /* TSMiniWebBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMiniWebBrowser.m; sourceTree = "<group>"; };
+		6FBF4B8914F7EAF90048C98E /* TSMiniWebBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSMiniWebBrowser.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6FBF4B5B14F7EACF0048C98E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF4B6314F7EACF0048C98E /* UIKit.framework in Frameworks */,
+				6FBF4B6514F7EACF0048C98E /* Foundation.framework in Frameworks */,
+				6FBF4B6714F7EACF0048C98E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FBF4B5314F7EACF0048C98E = {
+			isa = PBXGroup;
+			children = (
+				6FBF4B6814F7EACF0048C98E /* EmbeddedYoutubePatch */,
+				6FBF4B6114F7EACF0048C98E /* Frameworks */,
+				6FBF4B5F14F7EACF0048C98E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6FBF4B5F14F7EACF0048C98E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF4B5E14F7EACF0048C98E /* EmbeddedYoutubePatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FBF4B6114F7EACF0048C98E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF4B6214F7EACF0048C98E /* UIKit.framework */,
+				6FBF4B6414F7EACF0048C98E /* Foundation.framework */,
+				6FBF4B6614F7EACF0048C98E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6FBF4B6814F7EACF0048C98E /* EmbeddedYoutubePatch */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF4B7F14F7EAF90048C98E /* TSMiniWebBrowser */,
+				6FBF4B7114F7EACF0048C98E /* AppDelegate.h */,
+				6FBF4B7214F7EACF0048C98E /* AppDelegate.m */,
+				6FBF4B7414F7EACF0048C98E /* ViewController.h */,
+				6FBF4B7514F7EACF0048C98E /* ViewController.m */,
+				6FBF4B7714F7EACF0048C98E /* ViewController.xib */,
+				6FBF4B6914F7EACF0048C98E /* Supporting Files */,
+			);
+			path = EmbeddedYoutubePatch;
+			sourceTree = "<group>";
+		};
+		6FBF4B6914F7EACF0048C98E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF4B6A14F7EACF0048C98E /* EmbeddedYoutubePatch-Info.plist */,
+				6FBF4B6B14F7EACF0048C98E /* InfoPlist.strings */,
+				6FBF4B6E14F7EACF0048C98E /* main.m */,
+				6FBF4B7014F7EACF0048C98E /* EmbeddedYoutubePatch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FBF4B7F14F7EAF90048C98E /* TSMiniWebBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF4B8014F7EAF90048C98E /* images */,
+				6FBF4B8714F7EAF90048C98E /* TSMiniWebBrowser.h */,
+				6FBF4B8814F7EAF90048C98E /* TSMiniWebBrowser.m */,
+				6FBF4B8914F7EAF90048C98E /* TSMiniWebBrowser.xib */,
+			);
+			name = TSMiniWebBrowser;
+			path = ../../../TSMiniWebBrowser;
+			sourceTree = "<group>";
+		};
+		6FBF4B8014F7EAF90048C98E /* images */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF4B8114F7EAF90048C98E /* back_icon.png */,
+				6FBF4B8214F7EAF90048C98E /* back_icon@2x.png */,
+				6FBF4B8314F7EAF90048C98E /* forward_icon.png */,
+				6FBF4B8414F7EAF90048C98E /* forward_icon@2x.png */,
+				6FBF4B8514F7EAF90048C98E /* reload_icon.png */,
+				6FBF4B8614F7EAF90048C98E /* reload_icon@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6FBF4B5D14F7EACF0048C98E /* EmbeddedYoutubePatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FBF4B7C14F7EACF0048C98E /* Build configuration list for PBXNativeTarget "EmbeddedYoutubePatch" */;
+			buildPhases = (
+				6FBF4B5A14F7EACF0048C98E /* Sources */,
+				6FBF4B5B14F7EACF0048C98E /* Frameworks */,
+				6FBF4B5C14F7EACF0048C98E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmbeddedYoutubePatch;
+			productName = EmbeddedYoutubePatch;
+			productReference = 6FBF4B5E14F7EACF0048C98E /* EmbeddedYoutubePatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FBF4B5514F7EACF0048C98E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 6FBF4B5814F7EACF0048C98E /* Build configuration list for PBXProject "EmbeddedYoutubePatch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6FBF4B5314F7EACF0048C98E;
+			productRefGroup = 6FBF4B5F14F7EACF0048C98E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6FBF4B5D14F7EACF0048C98E /* EmbeddedYoutubePatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6FBF4B5C14F7EACF0048C98E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF4B6D14F7EACF0048C98E /* InfoPlist.strings in Resources */,
+				6FBF4B7914F7EACF0048C98E /* ViewController.xib in Resources */,
+				6FBF4B8A14F7EAF90048C98E /* back_icon.png in Resources */,
+				6FBF4B8B14F7EAF90048C98E /* back_icon@2x.png in Resources */,
+				6FBF4B8C14F7EAF90048C98E /* forward_icon.png in Resources */,
+				6FBF4B8D14F7EAF90048C98E /* forward_icon@2x.png in Resources */,
+				6FBF4B8E14F7EAF90048C98E /* reload_icon.png in Resources */,
+				6FBF4B8F14F7EAF90048C98E /* reload_icon@2x.png in Resources */,
+				6FBF4B9114F7EAF90048C98E /* TSMiniWebBrowser.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6FBF4B5A14F7EACF0048C98E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF4B6F14F7EACF0048C98E /* main.m in Sources */,
+				6FBF4B7314F7EACF0048C98E /* AppDelegate.m in Sources */,
+				6FBF4B7614F7EACF0048C98E /* ViewController.m in Sources */,
+				6FBF4B9014F7EAF90048C98E /* TSMiniWebBrowser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6FBF4B6B14F7EACF0048C98E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FBF4B6C14F7EACF0048C98E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6FBF4B7714F7EACF0048C98E /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FBF4B7814F7EACF0048C98E /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6FBF4B7A14F7EACF0048C98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6FBF4B7B14F7EACF0048C98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6FBF4B7D14F7EACF0048C98E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EmbeddedYoutubePatch/EmbeddedYoutubePatch-Prefix.pch";
+				INFOPLIST_FILE = "EmbeddedYoutubePatch/EmbeddedYoutubePatch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6FBF4B7E14F7EACF0048C98E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EmbeddedYoutubePatch/EmbeddedYoutubePatch-Prefix.pch";
+				INFOPLIST_FILE = "EmbeddedYoutubePatch/EmbeddedYoutubePatch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6FBF4B5814F7EACF0048C98E /* Build configuration list for PBXProject "EmbeddedYoutubePatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FBF4B7A14F7EACF0048C98E /* Debug */,
+				6FBF4B7B14F7EACF0048C98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FBF4B7C14F7EACF0048C98E /* Build configuration list for PBXNativeTarget "EmbeddedYoutubePatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FBF4B7D14F7EACF0048C98E /* Debug */,
+				6FBF4B7E14F7EACF0048C98E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FBF4B5514F7EACF0048C98E /* Project object */;
+}
