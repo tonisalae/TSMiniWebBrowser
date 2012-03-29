@@ -74,6 +74,13 @@
     }
 }
 
+//Added in the dealloc method to remove the webview delegate, because if you use this in a navigation controller
+//TSMiniWebBrowser can get deallocated while the page is still loading and the web view will call its delegate-- resulting in a crash
+-(void)dealloc
+{
+    [webView setDelegate:nil];
+}
+
 #pragma mark - Init
 
 -(void) initTitleBar {
