@@ -81,5 +81,5 @@ typedef enum {
 // Public Methods
 - (id)initWithUrl:(NSURL*)url;
 - (void)setFixedTitleBarText:(NSString*)newTitleBarText;
-
+- (void)loadURL:(NSURL*)url;
 @end

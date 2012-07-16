@@ -66,6 +66,9 @@
 }
 
 -(void) dismissController {
+    if ( webView.loading ) {
+        [webView stopLoading];
+    }
     [self dismissModalViewControllerAnimated:YES];
     
     // Notify the delegate
@@ -364,6 +367,10 @@
 - (void)setFixedTitleBarText:(NSString*)newTitleBarText {
     forcedTitleBarText = newTitleBarText;
     showPageTitleOnTitleBar = NO;
+}
+
+- (void)loadURL:(NSURL*)url {
+    [webView loadRequest: [NSURLRequest requestWithURL: url]];
 }
 
 #pragma mark - UIWebViewDelegate
