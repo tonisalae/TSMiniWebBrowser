@@ -412,6 +412,12 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [self hideActivityIndicators];
     
+    // To avoid getting an error alert when you click on a link
+    // before a request has finished loading.
+    if ([error code] == NSURLErrorCancelled) {
+        return;
+    }
+
     // Show error alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not load page", nil)
                                                     message:error.localizedDescription
