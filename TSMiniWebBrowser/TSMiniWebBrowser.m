@@ -327,9 +327,12 @@
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     
     if (mode == TSMiniWebBrowserModeTabBar) {
-        [actionSheet showInView:self.tabBarController.view];
-        
-    } else {
+        [actionSheet showFromTabBar:self.tabBarController.tabBar];
+    }
+    else if (mode == TSMiniWebBrowserModeNavigation && [self.navigationController respondsToSelector:@selector(tabBarController)]) {
+        [actionSheet showFromTabBar:self.navigationController.tabBarController.tabBar];
+    }
+    else {
         [actionSheet showInView:self.view];
     }
     
