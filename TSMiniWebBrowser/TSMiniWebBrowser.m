@@ -346,6 +346,9 @@
     if (buttonIndex == [actionSheet cancelButtonIndex]) return;
     
     NSURL *theURL = [webView.request URL];
+    if (theURL == nil || [theURL isEqual:[NSURL URLWithString:@""]]) {
+        theURL = urlToLoad;
+    }
     
     if (buttonIndex == kSafariButtonIndex) {
         [[UIApplication sharedApplication] openURL:theURL];
