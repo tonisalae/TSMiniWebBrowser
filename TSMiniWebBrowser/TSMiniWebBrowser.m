@@ -329,7 +329,8 @@
     if (mode == TSMiniWebBrowserModeTabBar) {
         [actionSheet showFromTabBar:self.tabBarController.tabBar];
     }
-    else if (mode == TSMiniWebBrowserModeNavigation && [self.navigationController respondsToSelector:@selector(tabBarController)]) {
+    //else if (mode == TSMiniWebBrowserModeNavigation && [self.navigationController respondsToSelector:@selector(tabBarController)]) {
+    else if (mode == TSMiniWebBrowserModeNavigation && self.navigationController.tabBarController != nil) {
         [actionSheet showFromTabBar:self.navigationController.tabBarController.tabBar];
     }
     else {
