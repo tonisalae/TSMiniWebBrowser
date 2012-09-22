@@ -37,6 +37,9 @@
 @synthesize barStyle;
 @synthesize modalDismissButtonTitle;
 
+#define kToolBarHeight  44
+#define kTabBarHeight   49
+
 #define kSafariButtonIndex 0
 #define kChromeButtonIndex 1
 
@@ -316,14 +319,14 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
     actionSheet.title = urlString;
     actionSheet.delegate = self;
-    [actionSheet addButtonWithTitle:@"Open in Safari"];
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Open in Safari", nil)];
     
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"googlechrome://"]]) {
         // Chrome is installed, add the option to open in chrome.
-        [actionSheet addButtonWithTitle:@"Open in Chrome"];
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Open in Chrome", nil)];
     }
     
-    actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:@"Cancel"];    
+    actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     
     if (mode == TSMiniWebBrowserModeTabBar) {

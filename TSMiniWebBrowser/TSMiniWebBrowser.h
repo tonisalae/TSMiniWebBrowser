@@ -26,9 +26,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define kToolBarHeight  44
-#define kTabBarHeight   49
-
 @protocol TSMiniWebBrowserDelegate <NSObject>
 @optional
 -(void) tsMiniWebBrowserDidDismiss;
