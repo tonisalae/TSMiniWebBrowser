@@ -40,8 +40,10 @@
 #define kToolBarHeight  44
 #define kTabBarHeight   49
 
-#define kSafariButtonIndex 0
-#define kChromeButtonIndex 1
+enum actionSheetButtonIndex {
+	kSafariButtonIndex,
+	kChromeButtonIndex,
+};
 
 #pragma mark - Private Methods
 
@@ -82,28 +84,6 @@
         [delegate tsMiniWebBrowserDidDismiss];
     }
 }
-
-/*-(void) setStatusBarStyle
-{
-    UIStatusBarStyle statusStyle = UIStatusBarStyleDefault;
-    switch (barStyle) {
-        case UIBarStyleDefault:
-            statusStyle = UIStatusBarStyleDefault;
-            break;
-            
-        case UIBarStyleBlack:
-        case UIBarStyleBlackOpaque:
-            statusStyle = UIStatusBarStyleBlackOpaque;
-            break;
-            
-        case UIBarStyleBlackTranslucent:
-            statusStyle = UIStatusBarStyleBlackTranslucent;
-            break;
-            
-        default:
-            break;
-    }
-}*/
 
 //Added in the dealloc method to remove the webview delegate, because if you use this in a navigation controller
 //TSMiniWebBrowser can get deallocated while the page is still loading and the web view will call its delegate-- resulting in a crash
