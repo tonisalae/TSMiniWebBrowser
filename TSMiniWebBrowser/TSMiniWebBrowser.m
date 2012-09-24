@@ -83,6 +83,28 @@
     }
 }
 
+/*-(void) setStatusBarStyle
+{
+    UIStatusBarStyle statusStyle = UIStatusBarStyleDefault;
+    switch (barStyle) {
+        case UIBarStyleDefault:
+            statusStyle = UIStatusBarStyleDefault;
+            break;
+            
+        case UIBarStyleBlack:
+        case UIBarStyleBlackOpaque:
+            statusStyle = UIStatusBarStyleBlackOpaque;
+            break;
+            
+        case UIBarStyleBlackTranslucent:
+            statusStyle = UIStatusBarStyleBlackTranslucent;
+            break;
+            
+        default:
+            break;
+    }
+}*/
+
 //Added in the dealloc method to remove the webview delegate, because if you use this in a navigation controller
 //TSMiniWebBrowser can get deallocated while the page is still loading and the web view will call its delegate-- resulting in a crash
 -(void)dealloc
@@ -92,6 +114,7 @@
 
 #pragma mark - Init
 
+// This method is only used in modal mode
 -(void) initTitleBar {
     UIBarButtonItem *buttonDone = [[UIBarButtonItem alloc] initWithTitle:modalDismissButtonTitle style:UIBarButtonItemStyleBordered target:self action:@selector(dismissController)];
     
@@ -204,6 +227,7 @@
         showActionButton = YES;
         modalDismissButtonTitle = NSLocalizedString(@"Done", nil);
         forcedTitleBarText = nil;
+        barStyle = UIBarStyleDefault;
     }
     
     return self;
@@ -241,6 +265,9 @@
         [self initTitleBar];
     }
     
+    // Status bar style
+    [[UIApplication sharedApplication] setStatusBarStyle:barStyle animated:YES];
+    
     // UI state
     buttonGoBack.enabled = NO;
     buttonGoForward.enabled = NO;
@@ -262,6 +289,9 @@
     if (mode == TSMiniWebBrowserModeNavigation) {
         self.navigationController.navigationBar.barStyle = originalBarStyle;
     }
+    
+    // Restore Status bar style
+    [[UIApplication sharedApplication] setStatusBarStyle:originalBarStyle animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

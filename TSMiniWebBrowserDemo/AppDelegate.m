@@ -38,7 +38,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    BOOL wantTabBarDemo = NO;
+    BOOL wantTabBarDemo = YES;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
