@@ -36,6 +36,7 @@
 @synthesize showActionButton;
 @synthesize barStyle;
 @synthesize modalDismissButtonTitle;
+@synthesize barTintColor;
 
 #define kToolBarHeight  44
 #define kTabBarHeight   49
@@ -167,6 +168,9 @@ enum actionSheetButtonIndex {
     
     // Set buttons to tool bar
     [toolBar setItems:toolBarButtons animated:YES];
+	
+	// Tint toolBar
+	[toolBar setTintColor:barTintColor];
 }
 
 -(void) initWebView {
@@ -208,6 +212,7 @@ enum actionSheetButtonIndex {
         modalDismissButtonTitle = NSLocalizedString(@"Done", nil);
         forcedTitleBarText = nil;
         barStyle = UIBarStyleDefault;
+		barTintColor = nil;
     }
     
     return self;
