@@ -277,6 +277,9 @@ enum actionSheetButtonIndex {
     
     // Restore Status bar style
     [[UIApplication sharedApplication] setStatusBarStyle:originalBarStyle animated:NO];
+    
+    // Stop loading
+    [webView stopLoading];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
