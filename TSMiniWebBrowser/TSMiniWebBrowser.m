@@ -38,6 +38,7 @@
 @synthesize modalDismissButtonTitle;
 @synthesize barTintColor;
 @synthesize domainLockList;
+@synthesize currentURL;
 
 #define kToolBarHeight  44
 #define kTabBarHeight   49
@@ -159,7 +160,7 @@ enum actionSheetButtonIndex {
     [toolBarButtons addObject:buttonGoForward];
     [toolBarButtons addObject:flexibleSpace];
     [toolBarButtons addObject:buttonContainer];
-    if (showReloadButton) { 
+    if (showReloadButton) {
         [toolBarButtons addObject:buttonReload];
     }
     if (showActionButton) {
@@ -298,7 +299,7 @@ enum actionSheetButtonIndex {
         case UIInterfaceOrientationPortraitUpsideDown:
         case UIInterfaceOrientationPortrait:
             // Going to Portrait mode
-            for (UIScrollView *scroll in [webView subviews]) { //we get the scrollview 
+            for (UIScrollView *scroll in [webView subviews]) { //we get the scrollview
                 // Make sure it really is a scroll view and reset the zoom scale.
                 if ([scroll respondsToSelector:@selector(setZoomScale:)]){
                     scroll.minimumZoomScale = scroll.minimumZoomScale/ratioAspect;
@@ -309,7 +310,7 @@ enum actionSheetButtonIndex {
             break;
         default:
             // Going to Landscape mode
-            for (UIScrollView *scroll in [webView subviews]) { //we get the scrollview 
+            for (UIScrollView *scroll in [webView subviews]) { //we get the scrollview
                 // Make sure it really is a scroll view and reset the zoom scale.
                 if ([scroll respondsToSelector:@selector(setZoomScale:)]){
                     scroll.minimumZoomScale = scroll.minimumZoomScale *ratioAspect;
@@ -453,6 +454,11 @@ enum actionSheetButtonIndex {
 		{
             if (domainLockList == nil || [domainLockList isEqualToString:@""])
             {
+				if (navigationType == UIWebViewNavigationTypeLinkClicked)
+				{
+					currentURL = request.URL.absoluteString;
+				}
+                
                 return YES;
             }
             
@@ -468,7 +474,7 @@ enum actionSheetButtonIndex {
                         sendToSafari = NO;
                     }
                 }
-
+				
                 if (sendToSafari == YES)
                 {
                     [[UIApplication sharedApplication] openURL:[request URL]];
@@ -478,6 +484,11 @@ enum actionSheetButtonIndex {
                 
                 else
                 {
+					if (navigationType == UIWebViewNavigationTypeLinkClicked)
+					{
+						currentURL = request.URL.absoluteString;
+					}
+                    
                     return YES;
                 }
             }
@@ -511,7 +522,7 @@ enum actionSheetButtonIndex {
     if ([error code] == NSURLErrorCancelled) {
         return;
     }
-
+	
     // Show error alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Could not load page", nil)
                                                     message:error.localizedDescription
