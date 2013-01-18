@@ -37,6 +37,7 @@
 @synthesize barStyle;
 @synthesize modalDismissButtonTitle;
 @synthesize barTintColor;
+@synthesize domainLockList;
 
 #define kToolBarHeight  44
 #define kTabBarHeight   49
@@ -438,15 +439,50 @@ enum actionSheetButtonIndex {
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;
     }
-    
-    if ([[request.URL absoluteString] hasPrefix:@"http://www.youtube.com/v/"] ||
-        [[request.URL absoluteString] hasPrefix:@"http://itunes.apple.com/"] ||
-        [[request.URL absoluteString] hasPrefix:@"http://phobos.apple.com/"]) {
-        [[UIApplication sharedApplication] openURL:request.URL];
-        return NO;
-    }
-    
-    return YES;
+	
+	else
+	{
+		if ([[request.URL absoluteString] hasPrefix:@"http://www.youtube.com/v/"] ||
+			[[request.URL absoluteString] hasPrefix:@"http://itunes.apple.com/"] ||
+			[[request.URL absoluteString] hasPrefix:@"http://phobos.apple.com/"]) {
+			[[UIApplication sharedApplication] openURL:request.URL];
+			return NO;
+		}
+		
+		else
+		{
+            if (domainLockList == nil || [domainLockList isEqualToString:@""])
+            {
+                return YES;
+            }
+            
+            else
+            {
+                NSArray *domainList = [domainLockList componentsSeparatedByString:@","];
+                BOOL sendToSafari = YES;
+                
+                for (int x = 0; x < domainList.count; x++)
+                {
+                    if ([[request.URL absoluteString] hasPrefix:(NSString *)[domainList objectAtIndex:x]] == YES)
+                    {
+                        sendToSafari = NO;
+                    }
+                }
+
+                if (sendToSafari == YES)
+                {
+                    [[UIApplication sharedApplication] openURL:[request URL]];
+                    
+                    return NO;
+                }
+                
+                else
+                {
+                    return YES;
+                }
+            }
+		}
+	}
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {

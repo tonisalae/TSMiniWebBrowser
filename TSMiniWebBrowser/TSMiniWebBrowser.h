@@ -76,6 +76,7 @@ typedef enum {
 @property (nonatomic, assign) UIBarStyle barStyle;
 @property (nonatomic, strong) UIColor *barTintColor;
 @property (nonatomic, strong) NSString *modalDismissButtonTitle;
+@property (nonatomic, strong) NSString *domainLockList;
 
 // Public Methods
 - (id)initWithUrl:(NSURL*)url;
