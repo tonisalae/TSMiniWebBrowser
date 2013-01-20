@@ -269,6 +269,20 @@ enum actionSheetButtonIndex {
     [super viewDidUnload];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+	for (id subview in self.view.subviews)
+	{
+		if ([subview isKindOfClass: [UIWebView class]])
+		{
+			UIWebView *sv = subview;
+			[sv.scrollView setScrollsToTop:NO];
+		}
+	}
+	
+	[webView.scrollView setScrollsToTop:YES];
+}
+
 -(void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
